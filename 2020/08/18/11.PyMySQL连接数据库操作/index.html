@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Neal&#39;s blog</title>
+  <title>11.PyMySQL连接数据库操作 | Neal&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Neal&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="[TOC] 进行数据库连接连接数据库插卡可能版本 1234567891011121314151617181920#!&#x2F;usr&#x2F;bin&#x2F;python3import pymysql# 打开数据库连接db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="11.PyMySQL连接数据库操作">
+<meta property="og:url" content="http://yoursite.com/2020/08/18/11.PyMySQL%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="Neal&#39;s blog">
+<meta property="og:description" content="[TOC] 进行数据库连接连接数据库插卡可能版本 1234567891011121314151617181920#!&#x2F;usr&#x2F;bin&#x2F;python3import pymysql# 打开数据库连接db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &amp;">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-18T08:57:31.147Z">
+<meta property="article:modified_time" content="2020-08-18T04:52:19.059Z">
 <meta property="article:author" content="Neal">
 <meta name="twitter:card" content="summary">
   
@@ -148,103 +152,192 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-11.PyMySQL连接数据库操作" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      11.PyMySQL连接数据库操作
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/08/18/11.PyMySQL%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" class="archive-article-date">
+
+        
+        <a href="/2020/08/18/11.PyMySQL%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" class="archive-article-date">
   	<time datetime="2020-08-18T08:57:31.147Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-18</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/08/18/11.PyMySQL%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/">11.PyMySQL连接数据库操作</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="进行数据库连接"><a href="#进行数据库连接" class="headerlink" title="进行数据库连接"></a>进行数据库连接</h1><p>连接数据库插卡可能版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用 cursor() 方法创建一个游标对象 cursor</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line"># 使用 execute()  方法执行 SQL 查询</span><br><span class="line">cursor.execute(&quot;SELECT VERSION()&quot;)</span><br><span class="line"></span><br><span class="line"># 使用 fetchone() 方法获取单条数据.</span><br><span class="line">data &#x3D; cursor.fetchone()</span><br><span class="line"></span><br><span class="line">print(&quot;Database version : %s &quot; % data)</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
+<h1 id="数据库进行插入操作"><a href="#数据库进行插入操作" class="headerlink" title="数据库进行插入操作"></a>数据库进行插入操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用cursor()方法获取操作游标</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line"># SQL 插入语句</span><br><span class="line">sql &#x3D; &quot;INSERT INTO user&quot; \</span><br><span class="line">      &quot;(id, name ) \</span><br><span class="line">       VALUES (%s, &#39;%s&#39;)&quot; % \</span><br><span class="line">      (3, &#39;Mac&#39;)</span><br><span class="line">try:</span><br><span class="line">    # 执行sql语句</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    # 执行sql语句</span><br><span class="line">    db.commit()</span><br><span class="line">except:</span><br><span class="line">    # 发生错误时回滚</span><br><span class="line">    db.rollback()</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
 
+<h1 id="数据库查询操作"><a href="#数据库查询操作" class="headerlink" title="数据库查询操作"></a>数据库查询操作</h1><p>Python查询Mysql使用 fetchone() 方法获取单条数据, 使用fetchall() 方法获取多条数据。<br>fetchone(): 该方法获取下一个查询结果集。结果集是一个对象。fetchone()函数它的返回值是单个的元组,也就是一行记录,如果没有结果,那就会返回null。<br>fetchall(): 接收全部的返回结果行。fetchall()函数,它的返回值是多个元组,即返回多个行记录,如果没有结果,返回的是()。<br>rowcount: 这是一个只读属性，并返回执行execute()方法后影响的行数。</p>
+<h2 id="查询ID等于1的数据"><a href="#查询ID等于1的数据" class="headerlink" title="查询ID等于1的数据"></a>查询ID等于1的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用cursor()方法获取操作游标</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line"># SQL 查询语句</span><br><span class="line">sql &#x3D; &quot;SELECT * FROM user \</span><br><span class="line">       WHERE id &#x3D; %s&quot; % (1)</span><br><span class="line">try:</span><br><span class="line">    # 执行SQL语句</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    # 获取所有记录列表</span><br><span class="line">    results &#x3D; cursor.fetchone()</span><br><span class="line">    # 打印结果</span><br><span class="line">    print(&quot;id&#x3D;%s,name&#x3D;%s&quot; % \</span><br><span class="line">          (results[0], results[1]))</span><br><span class="line">except:</span><br><span class="line">    print(&quot;Error: unable to fetch data&quot;)</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<h2 id="查询ID大于1的数据"><a href="#查询ID大于1的数据" class="headerlink" title="查询ID大于1的数据"></a>查询ID大于1的数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用cursor()方法获取操作游标</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line"># SQL 查询语句</span><br><span class="line">sql &#x3D; &quot;SELECT * FROM user \</span><br><span class="line">       WHERE id &gt; %s&quot; % (1)</span><br><span class="line">try:</span><br><span class="line">    # 执行SQL语句</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    # 获取所有记录列表</span><br><span class="line">    results &#x3D; cursor.fetchall()</span><br><span class="line">    for row in results:</span><br><span class="line">        id &#x3D; row[0]</span><br><span class="line">        name &#x3D; row[1]</span><br><span class="line">        # 打印结果</span><br><span class="line">        print(&quot;id&#x3D;%s,name&#x3D;%s&quot; % \</span><br><span class="line">              (id, name))</span><br><span class="line"></span><br><span class="line">    total &#x3D; cursor.rowcount</span><br><span class="line">    print(&quot;总数: %s&quot; % \</span><br><span class="line">          (total))</span><br><span class="line">except:</span><br><span class="line">    print(&quot;Error: unable to fetch data&quot;)</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<h1 id="执行修改操作"><a href="#执行修改操作" class="headerlink" title="执行修改操作"></a>执行修改操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用cursor()方法获取操作游标</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line"># SQL 查询语句</span><br><span class="line">sql &#x3D; &quot;UPDATE user SET name &#x3D; &#39;%s&#39; WHERE id &#x3D; %s&quot; % (&#39;wangwu&#39;, 3)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 执行SQL语句</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    # 提交到数据库执行</span><br><span class="line">    db.commit()</span><br><span class="line">except:</span><br><span class="line">    # 发生错误时回滚</span><br><span class="line">    db.rollback()</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用cursor()方法获取操作游标</span><br><span class="line">cursor &#x3D; db.cursor()</span><br><span class="line"></span><br><span class="line"># SQL 查询语句</span><br><span class="line">sql &#x3D; &quot;delete from  user WHERE id &#x3D; %s&quot; % ( 3)</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 执行SQL语句</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    # 提交到数据库执行</span><br><span class="line">    db.commit()</span><br><span class="line">except:</span><br><span class="line">    # 发生错误时回滚</span><br><span class="line">    db.rollback()</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<h1 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h1><blockquote>
+<p>PyMySQL查询数据库并映射为dict类型数据:</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;usr&#x2F;bin&#x2F;python3</span><br><span class="line"></span><br><span class="line">import pymysql</span><br><span class="line"></span><br><span class="line"># 打开数据库连接</span><br><span class="line">db &#x3D; pymysql.connect(&quot;localhost&quot;, &quot;root&quot;, &quot;123456&quot;, &quot;pycraw&quot;)</span><br><span class="line"></span><br><span class="line"># 使用cursor()方法获取操作游标</span><br><span class="line">cursor &#x3D; db.cursor(cursor &#x3D; pymysql.cursors.DictCursor)</span><br><span class="line"></span><br><span class="line"># SQL 查询语句</span><br><span class="line">sql &#x3D; &quot;SELECT * FROM user&quot;</span><br><span class="line"></span><br><span class="line">try:</span><br><span class="line">    # 执行SQL语句</span><br><span class="line">    cursor.execute(sql)</span><br><span class="line">    # 获取所有记录列表</span><br><span class="line">    results &#x3D; cursor.fetchall()</span><br><span class="line">    for result in results:</span><br><span class="line">        # 打印结果</span><br><span class="line">        print(&quot;result: %s&quot; % (result))</span><br><span class="line"></span><br><span class="line">except:</span><br><span class="line">    print(&quot;Error: unable to fetch data&quot;)</span><br><span class="line"></span><br><span class="line"># 关闭数据库连接</span><br><span class="line">db.close()</span><br></pre></td></tr></table></figure>
+
+<p>结果:</p>
+<p>result: {‘id’: 1, ‘name’: ‘zs’, ‘userName’: ‘zhangsan’}<br>result: {‘id’: 2, ‘name’: ‘li’, ‘userName’: ‘lisi’}<br>result: {‘id’: 3, ‘name’: ‘ww’, ‘userName’: ‘wangwu’}</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/08/18/11.PyMySQL%E8%BF%9E%E6%8E%A5%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2020-07-05T01:55:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-05</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/07/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我的第一篇博客文章</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/05/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0/">我的第一篇博客文章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#进行数据库连接"><span class="toc-number">1.</span> <span class="toc-text">进行数据库连接</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库进行插入操作"><span class="toc-number">2.</span> <span class="toc-text">数据库进行插入操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据库查询操作"><span class="toc-number">3.</span> <span class="toc-text">数据库查询操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#查询ID等于1的数据"><span class="toc-number">3.1.</span> <span class="toc-text">查询ID等于1的数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#查询ID大于1的数据"><span class="toc-number">3.2.</span> <span class="toc-text">查询ID大于1的数据</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#执行修改操作"><span class="toc-number">4.</span> <span class="toc-text">执行修改操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#删除操作"><span class="toc-number">5.</span> <span class="toc-text">删除操作</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#补充"><span class="toc-number">6.</span> <span class="toc-text">补充</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/07/04/hello-world/" class="archive-article-date">
-  	<time datetime="2020-07-04T07:13:05.108Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-07-04</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/07/04/hello-world/">Hello World</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -267,8 +360,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
